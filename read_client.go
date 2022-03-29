@@ -1,8 +1,9 @@
 package main
+
 import (
-	"net"
 	"fmt"
 	"io"
+	"net"
 )
 
 func main() {
@@ -15,14 +16,14 @@ func main() {
 	buf := make([]byte, 1<<19) // 512 KiB
 	for {
 		n, err := conn.Read(buf)
-        if err != nil {
-		    if err != io.EOF {
-			    fmt.Println(err)
-		    }
-		    break
-	    
-	    }
-	    fmt.Printf("read %d bytes\n", n)
+		if err != nil {
+			if err != io.EOF {
+				fmt.Println(err)
+			}
+			break
+
+		}
+		fmt.Printf("read %d bytes\n", n)
 	}
 	conn.Close()
 }
