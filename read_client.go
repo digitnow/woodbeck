@@ -11,6 +11,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
+    defer conn.Close()
 
 	buf := make([]byte, 1<<19) // 512 KiB
 	for {
@@ -24,5 +25,4 @@ func main() {
 	    }
 	    fmt.Printf("read %d bytes\n", n)
 	}
-	conn.Close()
 }

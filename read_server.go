@@ -26,12 +26,13 @@ func main() {
 			fmt.Println(err)
 			return
 		} 
-		defer conn.Close()
+		//defer conn.Close()
         fmt.Println("hei, jeg venter")
 		_, err = conn.Write(payload)
 		if err != nil {
 			fmt.Println(err)
 		}
+		conn.Close()
 	}
 	//}()
 
