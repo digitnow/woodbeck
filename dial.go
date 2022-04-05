@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net"
-	"fmt"
 	"bufio"
+	"fmt"
+	"net"
 )
 
 func main() {
@@ -13,6 +13,6 @@ func main() {
 	}
 	defer conn.Close()
 	fmt.Fprintf(conn, "Hei\n")
-    echo, err := bufio.NewReader(conn).ReadString('\n')
+	echo, err := bufio.NewReader(conn).ReadString('\n')
 	fmt.Println(echo)
 }

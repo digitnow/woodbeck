@@ -10,12 +10,12 @@ import (
 func TestReadIntoBuffer(t *testing.T) {
 	// Genererer mock data
 	payload := make([]byte, 1<<24) // alloker 16777216 bytes
-	_, err := rand.Read(payload) // leser inn tilfeldige byte i payload
+	_, err := rand.Read(payload)   // leser inn tilfeldige byte i payload
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	listener, err := net.Listen("tcp","127.0.0.1:")
+	listener, err := net.Listen("tcp", "127.0.0.1:")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -25,7 +25,7 @@ func TestReadIntoBuffer(t *testing.T) {
 		if err != nil {
 			t.Log(err)
 			return
-		} 
+		}
 		defer conn.Close()
 
 		_, err = conn.Write(payload)
@@ -39,14 +39,14 @@ func TestReadIntoBuffer(t *testing.T) {
 	buf := make([]byte, 1<<19) // 512 KiB
 	for {
 		n, err := conn.Read(buf)
-        if err != nil {
-		    if err != io.EOF {
-			    t.Error(err)
-		    }
-		    break
-	    
-	    }
-	    t.Logf("read %d bytes", n)
+		if err != nil {
+			if err != io.EOF {
+				t.Error(err)
+			}
+			break
+
+		}
+		t.Logf("read %d bytes", n)
 	}
 	conn.Close()
 }
